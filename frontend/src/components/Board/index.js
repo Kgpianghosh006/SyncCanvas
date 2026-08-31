@@ -91,7 +91,7 @@ function Board({ id }) {
           ? { headers: { Authorization: `Bearer ${token}` } }
           : {};
         const response = await axios.get(
-          `${process.env.RENDER_APP_BACKEND_URL || "http://localhost:5000"}/api/canvas/load/${id}`,
+          `${process.env.REACT_APP_BACKEND_URL || "http://localhost:5000"}/api/canvas/load/${id}`,
           config
         );
         setCanvasId(id); // Set the current canvas ID

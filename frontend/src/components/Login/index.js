@@ -13,7 +13,7 @@ const Login = () => {
     setIsLoading(true);
     setError('');
     try {
-      const response = await fetch(`${process.env.RENDER_APP_BACKEND_URL || "http://localhost:5000"}/api/users/login`, {
+      const response = await fetch(`${process.env.REACT_APP_BACKEND_URL || "http://localhost:5000"}/api/users/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),
