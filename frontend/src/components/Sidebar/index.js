@@ -21,7 +21,7 @@ const Sidebar = () => {
 
   const fetchCanvases = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/canvas/list', {
+      const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL || "http://localhost:5000"}/api/canvas/list`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setCanvases(response.data);
@@ -38,7 +38,7 @@ const Sidebar = () => {
 
   const handleCreateCanvas = async () => {
     try {
-      const response = await axios.post('http://localhost:5000/api/canvas/create', {}, {
+      const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL || "http://localhost:5000"}/api/canvas/create`, {}, {
         headers: { Authorization: `Bearer ${token}` }
       });
       fetchCanvases();
@@ -52,11 +52,11 @@ const Sidebar = () => {
 
   const handleDeleteCanvas = async (canvasIdToDelete) => {
     try {
-      await axios.delete(`http://localhost:5000/api/canvas/delete/${canvasIdToDelete}`, {
+      await axios.delete(`${process.env.REACT_APP_BACKEND_URL || "http://localhost:5000"}/api/canvas/delete/${canvasIdToDelete}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       
-      const response = await axios.get('http://localhost:5000/api/canvas/list', {
+      const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL || "http://localhost:5000"}/api/canvas/list`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setCanvases(response.data);
@@ -92,7 +92,7 @@ const Sidebar = () => {
     if (!targetId) { setError('No canvas selected to share.'); return; }
     try {
       const response = await axios.put(
-        `http://localhost:5000/api/canvas/share/${targetId}`,
+        `${process.env.REACT_APP_BACKEND_URL || "http://localhost:5000"}/api/canvas/share/${targetId}`,
         { email },
         { headers: { Authorization: `Bearer ${token}` } }
       );
