@@ -1,74 +1,119 @@
-<<<<<<< HEAD
-# Getting Started with Create React App
+# 🎨 SyncCanvas
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**🚀 Live Demo:** [Insert Deployment Link]
 
-## Available Scripts
+> **A real-time, modern collaborative whiteboard for sketching, planning, and creating together.**
 
-In the project directory, you can run:
+SyncCanvas is a sleek, full-stack whiteboard application that allows multiple users to draw and collaborate in real-time. Built with a focus on a modern SaaS aesthetic, it features smooth freehand drawing, geometric shapes, text tools, and an integrated sharing system to securely collaborate with teammates.
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## ✨ Key Features
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **⚡ Real-Time Collaboration:** Instant drawing synchronization across multiple clients using WebSockets (Socket.io).
+- **🖌️ Advanced Drawing Engine:** Powered by `roughjs` for geometric shapes (lines, rectangles, circles, arrows) and `perfect-freehand` for smooth, pressure-simulated brush strokes.
+- **🌓 Modern Theme System:** A sleek, fully responsive UI built with Tailwind CSS, featuring persistent Dark and Light modes.
+- **🔒 Secure Authentication:** Custom user account creation, login, and session management using JWT and Bcrypt password hashing.
+- **📂 Workspace Management:** Create, save, and delete multiple independent canvases linked to your account.
+- **🤝 Secure Sharing:** Share specific canvases directly with other registered users via their email addresses for private collaboration.
+- **🖼️ Export to PNG:** Download your finished whiteboard sketches locally as an image with a single click.
 
-### `npm test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🛠️ Tech Stack
 
-### `npm run build`
+### Frontend
+- **Framework:** React.js
+- **Styling:** Tailwind CSS v3
+- **Routing:** React Router v7
+- **Drawing Libraries:** RoughJS, perfect-freehand
+- **Real-time Client:** Socket.io-client
+- **State Management:** React Context API
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Backend
+- **Runtime:** Node.js
+- **Framework:** Express.js
+- **Real-time Server:** Socket.io
+- **Database:** MongoDB & Mongoose
+- **Authentication:** JSON Web Tokens (JWT) & Bcrypt
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 🚀 Getting Started (Local Development)
 
-### `npm run eject`
+Follow these steps to run the SyncCanvas application on your local machine.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Prerequisites
+- [Node.js](https://nodejs.org/) (v16 or higher)
+- [MongoDB](https://www.mongodb.com/) (Local instance or Atlas cluster)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 1. Clone the repository
+```bash
+git clone [Insert Repository URL]
+cd whiteboard-app
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### 2. Setup the Backend
+Navigate to the backend directory, install dependencies, and configure your environment.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```bash
+cd backend
+npm install
+```
 
-## Learn More
+Create a `.env` file in the `/backend` directory and add the following variables:
+```env
+PORT=5000
+MONGO_URI=[Insert your MongoDB Connection String]
+JWT_SECRET=[Insert a secure random string]
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Start the backend server:
+```bash
+npm start
+```
+*The server will start on port 5000.*
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### 3. Setup the Frontend
+Open a new terminal window, navigate to the frontend directory, and start the React app.
 
-### Code Splitting
+```bash
+cd frontend
+npm install
+npm run dev
+```
+*The frontend will start and open automatically on port 3000.*
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+---
 
-### Analyzing the Bundle Size
+## 💡 Usage
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+1. **Sign Up/In:** Open `http://localhost:3000` and create a free account or log in.
+2. **Create a Canvas:** Open the right-side panel (Sidebar) and click **New Canvas**.
+3. **Draw & Design:** Use the floating toolbar at the top to select brushes, shapes, text, or the eraser. Use the left floating toolbox to change colors and stroke sizes.
+4. **Collaborate:** Open the Sidebar, enter a colleague's email address under "Share canvas", and click **Share**. When they log in, the canvas will automatically appear in their workspace list.
 
-### Making a Progressive Web App
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## 📂 Project Structure
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-=======
-# Whiteboard_frontend
->>>>>>> 44e8dc38d6d0b5566116649f0a22135d8aec5372
+```text
+whiteboard-app/
+├── backend/                  # Express server & Socket.io hub
+│   ├── config/               # Database connection setup
+│   ├── controllers/          # API endpoint logic (Users, Canvases)
+│   ├── middlewares/          # JWT protection and auth checks
+│   ├── models/               # Mongoose DB Schemas
+│   ├── routes/               # Express routing
+│   └── server.js             # Main server entry point
+│
+└── frontend/                 # React frontend application
+    ├── public/
+    └── src/
+        ├── components/       # UI Components (Board, Sidebar, Toolbar, Toolbox, Auth)
+        ├── constants.js      # Global tool enums and color definitions
+        ├── store/            # React Context providers (Board, Toolbox)
+        ├── utils/            # Math logic, Socket setup, SVG path calculation
+        ├── App.js            # App router and layout wrapper
+        └── index.css         # Global Tailwind directives
+```
