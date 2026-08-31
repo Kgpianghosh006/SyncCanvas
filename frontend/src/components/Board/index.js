@@ -38,6 +38,7 @@ function Board({ id }) {
   const token = localStorage.getItem("whiteboard_user_token");
 
   const [isAuthorized, setIsAuthorized] = useState(true);
+  const [windowSize, setWindowSize] = useState({ width: window.innerWidth, height: window.innerHeight });
 
   useEffect(() => {
     if (id) {
@@ -90,7 +91,7 @@ function Board({ id }) {
           ? { headers: { Authorization: `Bearer ${token}` } }
           : {};
         const response = await axios.get(
-          `${process.env.REACT_APP_BACKEND_URL || "http://localhost:5000"}/api/canvas/load/${id}`,
+          `${process.env.RENDER_APP_BACKEND_URL || "http://localhost:5000"}/api/canvas/load/${id}`,
           config
         );
         setCanvasId(id); // Set the current canvas ID
@@ -106,9 +107,11 @@ function Board({ id }) {
   }, [id, token]);
 
   useEffect(() => {
-    const canvas = canvasRef.current;
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    const handleResize = () => {
+      setWindowSize({ width: window.innerWidth, height: window.innerHeight });
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   useEffect(() => {
@@ -171,7 +174,7 @@ function Board({ id }) {
     return () => {
       context.clearRect(0, 0, canvas.width, canvas.height);
     };
-  }, [elements]);
+  }, [elements, windowSize]);
 
 
   useEffect(() => {
@@ -221,6 +224,8 @@ function Board({ id }) {
       <canvas
         ref={canvasRef}
         id="canvas"
+        width={windowSize.width}
+        height={windowSize.height}
         className={
           activeToolItem === TOOL_ITEMS.ERASER
             ? classes.eraserCursor

@@ -21,7 +21,7 @@ const Sidebar = () => {
 
   const fetchCanvases = async () => {
     try {
-      const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL || "http://localhost:5000"}/api/canvas/list`, {
+      const response = await axios.get(`${process.env.RENDER_APP_BACKEND_URL || "http://localhost:5000"}/api/canvas/list`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setCanvases(response.data);
@@ -38,7 +38,7 @@ const Sidebar = () => {
 
   const handleCreateCanvas = async () => {
     try {
-      const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL || "http://localhost:5000"}/api/canvas/create`, {}, {
+      const response = await axios.post(`${process.env.RENDER_APP_BACKEND_URL || "http://localhost:5000"}/api/canvas/create`, {}, {
         headers: { Authorization: `Bearer ${token}` }
       });
       fetchCanvases();
@@ -52,11 +52,11 @@ const Sidebar = () => {
 
   const handleDeleteCanvas = async (canvasIdToDelete) => {
     try {
-      await axios.delete(`${process.env.REACT_APP_BACKEND_URL || "http://localhost:5000"}/api/canvas/delete/${canvasIdToDelete}`, {
+      await axios.delete(`${process.env.RENDER_APP_BACKEND_URL || "http://localhost:5000"}/api/canvas/delete/${canvasIdToDelete}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       
-      const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL || "http://localhost:5000"}/api/canvas/list`, {
+      const response = await axios.get(`${process.env.RENDER_APP_BACKEND_URL || "http://localhost:5000"}/api/canvas/list`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setCanvases(response.data);
@@ -79,10 +79,7 @@ const Sidebar = () => {
 
   const handleLogout = () => {
     localStorage.removeItem('whiteboard_user_token');
-    setCanvases([]);
-    setCanvasId('');
-    setUserLoginStatus(false);
-    navigate('/');
+    window.location.href = '/';
   };
 
   const handleShare = async () => {
@@ -92,7 +89,7 @@ const Sidebar = () => {
     if (!targetId) { setError('No canvas selected to share.'); return; }
     try {
       const response = await axios.put(
-        `${process.env.REACT_APP_BACKEND_URL || "http://localhost:5000"}/api/canvas/share/${targetId}`,
+        `${process.env.RENDER_APP_BACKEND_URL || "http://localhost:5000"}/api/canvas/share/${targetId}`,
         { email },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -109,9 +106,9 @@ const Sidebar = () => {
   if (!isOpen && isUserLoggedIn) {
     return (
       <button
-        className="fixed top-5 right-5 w-9 h-9 flex items-center justify-center rounded-xl bg-white/80 dark:bg-zinc-900/80 backdrop-blur-md shadow-lg z-50 border border-slate-200/60 dark:border-zinc-800/60 text-slate-600 dark:text-zinc-400 hover:bg-slate-50 dark:hover:bg-zinc-800 transition-all duration-150"
+        className="fixed top-5 right-5 w-9 h-9 flex items-center justify-center rounded-xl bg-[#fdfbf7] backdrop-blur-md shadow-lg z-50 border border-slate-300 text-slate-700 hover:bg-[#f3f0e9] transition-all duration-150"
         onClick={() => setIsOpen(true)}
-        title="Open canvases"
+        title="Open Sidebar"
       >
         <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
