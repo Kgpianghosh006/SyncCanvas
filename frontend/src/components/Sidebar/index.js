@@ -6,7 +6,7 @@ import boardContext from '../../store/board-context';
 const Sidebar = () => {
   const [canvases, setCanvases] = useState([]);
   const token = localStorage.getItem('whiteboard_user_token');
-  const { canvasId, setCanvasId, isUserLoggedIn, setUserLoginStatus } = useContext(boardContext);
+  const { canvasId, setCanvasId, isUserLoggedIn } = useContext(boardContext);
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [error, setError] = useState('');

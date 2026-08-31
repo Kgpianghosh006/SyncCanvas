@@ -1,14 +1,12 @@
-import React, { useState, useContext } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
-import boardContext from '../../store/board-context';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const navigate = useNavigate();
-  const { setUserLoginStatus } = useContext(boardContext);
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
