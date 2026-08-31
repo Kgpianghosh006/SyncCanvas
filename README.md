@@ -1,6 +1,6 @@
 # 🎨 SyncCanvas
 
-**🚀 Live Demo:** [Insert Deployment Link]
+**🚀 Live Demo:** https://sync-canvas-io.vercel.app/
 
 > **A real-time, modern collaborative whiteboard for sketching, planning, and creating together.**
 
